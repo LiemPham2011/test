@@ -1,0 +1,122 @@
+html{
+    background-color: #D3D3D3;
+}
+body{
+    
+    font-family: tahoma;
+    font-size: 28px;
+    margin: 0 auto;
+    border: 2px solid;
+    background-color: #fff;
+
+}
+#title{
+    height: 70px;
+    background-color: #6196ce;
+    color: #333;
+    text-align: center;
+    line-height: 70px;
+    border: 0.5px solid;
+}
+
+#title ul{
+    margin: 0px;
+    padding: 0px;
+}
+#title ul li{
+    list-style: none;
+    float: right;
+    width: 90%;
+    font-size: 50px;
+}
+
+#main{
+    min-height:565px ;
+    display: flex;
+}
+
+#video{
+    margin-top: 50px;
+}
+
+#sensor{
+    display: flex;
+    height: 300px;
+    font-family: tahoma;
+    font-size: 28px;
+    font-weight: 200px;
+    color: #607B8B;
+    text-align: center;
+    margin-top: 50px;
+}
+#sensor_nhietdo{
+    display:flex;
+    flex-direction: column;
+    width: 200px;
+    margin-right :100px;
+    margin-left: 100px;
+    border:  #607B8B solid;
+    border-radius: 20px;
+    border: 8px double;
+    font-weight: 600;
+    
+}
+
+img#nd{
+    height: 100px;
+    width: 100px;
+}
+
+#sensor_doam{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-right:10px;
+    border: #607B8B solid;
+    border-radius: 20px;
+    border: 8px double;
+    font-weight: 600;
+}
+
+img#da{
+    height: 100px;
+    width: 100px;
+}
+
+#nhietdo{
+    text-align: center;
+    float: inline-start;
+    position: relative;
+}
+#doam
+{
+    position: relative;
+    float: left;
+}
+
+#control {
+    display: flex;
+    margin-top: 100px;
+    margin-left: 50px;
+  }
+  
+  #control_1, #control_2 {
+    text-align: center;
+    border: 2px #13857b solid;
+    border-radius: 30px;
+    width: 220px;
+    height: 200px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+  }
+
+  
+  #control_1 img, #control_2 img {
+    display: block;
+    margin: 0 auto;
+    min-height: 120px;
+    width: 130px;
+    background-size: cover;
+  }
+  
+ 

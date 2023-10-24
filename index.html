@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KiemTra</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="header">
+        <div id="title">
+            <ul>
+                <li><b>PHAM TRAN THANH LIEM</b></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="dk">
+            <div id="sensor">
+                <div id="sensor_nhietdo">
+                    <h2><img src="image\hot.png" id="nd"></h2>
+                    <h7 id="nhietdo"></h7>
+                    <p>Nhiệt độ</p>
+                </div>
+
+                <div id="sensor_doam"> 
+                    <h2><img src="image\do_am.png" id="da"></h2>
+                    <h7 id="doam"></h7>
+                    <p>Độ ẩm</p>
+                </div>
+            </div>
+
+            <div id="control">
+                <div id="control_1">
+                    <img src="image\den_off.jpg" id="den">
+                    <input type="range" min="1" max="100" class="slider" id="myRange1" oninput="KT()"><br>
+                </div>
+                <div id="control_2">
+                    <img src="image\loc_1.png"id="quat">
+                    <button type="button" id="btn1" >On</button>
+                    <button type="button" id="btn2" >Off</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="video">
+            <iframe width="560" height="650" src="https://www.youtube.com/embed/QaEK3kXVLd4?si=XeFjYf_vWXHlczN2" title="video"></iframe>
+        </div>
+    </div>
+
+    <script src="function.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+ https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+<script>
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyAW9GB45HmylRiFJXcm-TyjmygUXLxga_M",
+    authDomain: "smart-57671.firebaseapp.com",
+    databaseURL: "https://smart-57671-default-rtdb.firebaseio.com",
+    projectId: "smart-57671",
+    storageBucket: "smart-57671.appspot.com",
+    messagingSenderId: "824388073086",
+    appId: "1:824388073086:web:adb3ae311330473ba3ca2f",
+    measurementId: "G-GCLR4SWJKT"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+</script>
+
+<script>
+    //functions
+    var nhietDo = document.getElementById('nhietdo');
+    var dbRef = firebase.database().ref('test').child('NhietDo');
+    var doAm = document.getElementById('doam');
+    var dbRef2 = firebase.database().ref('test').child('DoAm');
+    dbRef.on('value', snap => {
+      var nhiet = snap.val();
+      nhietDo.innerText = nhiet + "°C";
+    });
+  
+    dbRef2.on('value', snap => {
+      var am = snap.val();
+      doAm.innerText = am + "%";
+    });
+</script>
+
+
+<script>
+    function KT(){
+        let img1 = document.querySelector('den')
+        let slider = document.getElementById("myRange1");
+        let data = slider.value;
+        if (slider.value >= 50){
+            img1.src='image/den_on.jpg';
+            firebase.database().ref("test").child("thietbi").update({den: 1});
+        }else{
+            img1.src='image/den_off.jpg';
+            firebase.database().ref("test").child("thietbi").update({den: 0});
+        }
+    }
+    setInterval(KT, 1000);
+</script>
+
+</body>
+</html>
